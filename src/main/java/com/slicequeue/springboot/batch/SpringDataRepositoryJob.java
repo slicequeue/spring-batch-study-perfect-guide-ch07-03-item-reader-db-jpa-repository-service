@@ -23,8 +23,8 @@ import org.springframework.data.domain.Sort;
 
 import java.util.Collections;
 
-@EnableBatchProcessing
-@SpringBootApplication
+//@EnableBatchProcessing
+//@SpringBootApplication
 public class SpringDataRepositoryJob {
 
     @Autowired
@@ -68,7 +68,7 @@ public class SpringDataRepositoryJob {
 
     @Bean
     public Job job() {
-        return this.jobBuilderFactory.get("job-jpa-paging")
+        return this.jobBuilderFactory.get("job-repository-paging")
                 .validator(validator())
                 .incrementer(new RunIdIncrementer())
                 .start(copyFileStep())
@@ -78,6 +78,5 @@ public class SpringDataRepositoryJob {
     public static void main(String[] args) {
         SpringApplication.run(SpringDataRepositoryJob.class, "city=Springfield");
     }
-
 
 }
