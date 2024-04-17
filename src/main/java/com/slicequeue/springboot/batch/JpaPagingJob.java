@@ -33,8 +33,8 @@ import java.util.Collections;
  * - 하이버네이트 예제에서 처럼 JPA 애너테이션을 사용하여 별도 매핑작업 필요하지 않음
  * JPA 예제에서는 커서 기법의 데이터베이스 접근을 지원하지 않음. 페이징만 제공하며 JpaPagingItemReader 사용함 이 부분만 주의 하면 됨
  */
-@EnableBatchProcessing
-@SpringBootApplication
+//@EnableBatchProcessing
+//@SpringBootApplication
 public class JpaPagingJob {
 
     static class CustomerByCityQueryProvider extends AbstractJpaQueryProvider {
@@ -109,7 +109,7 @@ public class JpaPagingJob {
 
     @Bean
     public Job job() {
-        return this.jobBuilderFactory.get("job")
+        return this.jobBuilderFactory.get("job-jpa-paging")
                 .validator(validator())
                 .incrementer(new RunIdIncrementer())
                 .start(copyFileStep())
